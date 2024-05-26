@@ -1,0 +1,4 @@
+https://anthonynsimon.com/blog/kubernetes-cluster-raspberry-pi/
+https://canonical-subiquity.readthedocs-hosted.com/en/latest/howto/autoinstall-quickstart.html
+osx mounting
+
