@@ -1,0 +1,5 @@
+ssh-keygen -t ed25519 -C "snn1024a@gmail.com"   #generate new key
+eval `ssh-agent -s`                             #start ssh-agent
+ssh-add ~/.ssh/id_github                        #add the new key to the ssh-agent
+ssh -T git@github.com                           #test ssh connection  
+Hi snn1024a! You've successfully authenticated, but GitHub does not provide shell access.
