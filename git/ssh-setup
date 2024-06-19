@@ -10,3 +10,8 @@ cat ~/.ssh/file-name-from-line-1.pub
 ssh -T git@github.com                           #test ssh connection  
 Hi snn1024a! You've successfully authenticated, but GitHub does not provide shell access.
 cd ~/opt/github/ ; git clone git@github.com:snn1024a/howtos.git;cd ~
+
+cd ~/opt/github/ansible/;
+#git add *;
+git commit -m "adding the git hub side";
+git push;cd ~;
