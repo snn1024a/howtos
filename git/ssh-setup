@@ -14,4 +14,5 @@ cd ~/opt/github/ ; git clone git@github.com:snn1024a/howtos.git;cd ~
 cd ~/opt/github/ansible/;
 #git add *;
 git commit -m "adding the git hub side";
-git push;cd ~;
+git push;
+cd ~;
