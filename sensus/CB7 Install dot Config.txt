@@ -1,0 +1,441 @@
+####################################################
+## 				GLOBAL CONFIGURATIONS 			  ##
+####################################################
+
+# use lower case for RNI_NAME below
+RNI_NAME=l3cb7dev
+
+# set 4 character identifier for RNI customer
+CUSTOMER_ID=ARQV
+
+# user name which can be used to SSH to each of the linux servers in the RNI
+LINUX_USER=flexop
+
+# Optional login shell for service accounts (on hardened systems it should be set to /sbin/nologin)
+# If not specified /bin/bash will be used
+# Applicable to flexnet, flexip, sensus, broker, nms, ncprogs, tomdma, gateway, flexweb, postgres users
+SERVICE_ACCOUNTS_SHELL=/sbin/nologin
+
+#Fully qualified name of the domain that the RNI servers are present in
+DOMAIN=company.domain.com
+
+# Linux server DNS name from which to copy the RNI ISOs from
+SERVER_TO_COPY_ISOS_FROM=file-server-pqdn
+
+# user name which can be used to SCP from SERVER_TO_COPY_ISOS_FROM
+SERVER_TO_COPY_ISOS_FROM_USER=user
+
+# Directory on SERVER_TO_COPY_ISOS_FROM where the ISOs are located
+DIRECTORY_TO_COPY_ISOS_FROM=/example/directory/where/isos/kept/
+
+# This is the number of seconds that the installation scripts will wait between each SSH/SCP command
+# Supposed to default to 1
+SECONDS_BETWEEN_EACH_SSH_CMD=1
+
+# Enter IPv4 address of DNS Server
+DNS_SERVER_IPV4=??.??.??.??
+
+# Enter IPv4 Address of the Failover DNS server
+FAILOVER_DNS_SERVER_IPV4=??.??.??.??
+
+# Enter the IPv4 address of the server that will receive SMTP traps
+SMTP_TRAP_SERVER_IPV4=??.??.??.??
+
+# Enter the IPv4 address of where syslogs should point too. Use 127.0.0.1 if you do not have a syslog server
+SYSLOG_SERVER_IPV4=??.??.??.??
+
+# Enter the IPv4 address of where forwarder should point to. Use 127.0.0.1 if you do not know
+FORWARDER_IPV4=??.??.??.??
+
+# IPv6 Prefix
+IPV6_PREFIX=????:????::/??
+
+# in a SINGLE SLICE put IPv4 address of NC server in for F5_LOAD_BALANCER_IPv4
+# in a DUAL or N SLICE put IPv4 address of F5 LOAD BALANCER in for F5_LOAD_BALANCER_IPv4
+F5_NC_LOAD_BALANCER_IPv4=??.??.??.??
+
+# in a SINGLE SLICE put IPv4 address of GW server in for F5_LOAD_BALANCER_IPv4
+# in a DUAL or N SLICE put IPv4 address of F5 LOAD BALANCER in for F5_LOAD_BALANCER_IPv4
+F5_GW_LOAD_BALANCER_IPv4=??.??.??.??
+
+# in a SINGLE SLICE put IPv6 address of GW server in for F5_LOAD_BALANCER_IPv6
+# in a DUAL or N SLICE put IPv6 address of F5 LOAD BALANCER in for F5_LOAD_BALANCER_IPv6
+F5_GW_LOAD_BALANCER_IPv6=????:????:?:?::??:???
+
+# in a SINGLE SLICE put IPv4 address of Flexip server in for F5_LOAD_BALANCER_IPv4
+# in a N SLICE put IPv4 address of F5 LOAD BALANCER in for F5_LOAD_BALANCER_IPv4
+F5_FLEXIP_LOAD_BALANCER_IPv4=??.??.??.??
+
+# in a SINGLE SLICE put IPv6 address of Flexip server in for F5_LOAD_BALANCER_IPv6
+# in a N SLICE put IPv6 address of F5 LOAD BALANCER in for F5_LOAD_BALANCER_IPv6
+F5_FLEXIP_LOAD_BALANCER_IPv6=????:????:?:?::??:???
+
+# in a SINGLE SLICE put IPv6 address of GW server in for GW_IPV6
+# in a DUAL or N SLICE put IPv6 address of F5 LOAD BALANCER in for GW_IPV6
+GW_IPV6=????:????:?:?::??:???
+
+# password you want ActiveMQ to use
+ACTIVEMQ_PASSWORD=pAssw0rd!
+
+# whether or not you want to allow unique key rotation. Valid values true or false
+ALLOW_UNIQUE_KEY_ROTATION=false
+
+# HSM server token label
+HSM_TOKEN_LABEL=????????
+
+# HSM server token id
+HSM_TOKEN_ID=????-????-????-????
+
+# DNS name of the DSPSim/test server. If you are not running a DSPSim/test server in your configuration
+# then this is the DNS name that you want to associate with the DSP hosts file tag on the linux servers
+DSP=rniname-dsp
+
+#Multicast Address for use by Flexnet-monitoring service. This must be a valid multicast adddress.
+MULTICAST_ADDRESS=??.??.??.??
+
+# FlexIP IPRE Compression caching setting for Multicast in n-slice systems to override default of 239.255.flexip1.flexip1 octets
+COMPRESSION_CACHING_IPRE_ADDRESS=??.??.??.??
+
+##Use Broadcast instead of Compression Multicast for FlexIP n-slice cloud, find value on flexip via ifconfig command
+# not sure of conflict when running 2 RNIs with same Broadcast address
+BROADCAST_ADDRESS=??.??.??.??
+
+#Value in GB that ActiveMQ Memory will be set to, default was 16
+ACTIVEMQ_MEMORY=16
+
+#Value in GB that GW Scheduler Memory will be set to, default was 8
+GWSCHEDULER_MEMORY=8
+
+#Value in GB that Routemanager minimum heap size will be set to, default was 24
+ROUTEMANAGER_MIN_HEAP_SIZE=24
+
+#Value in GB that Routemanager maximum heap size will be set to, default was 32
+ROUTEMANAGER_MAX_HEAP_SIZE=32
+
+#Value in GB that FWDL Memory will be set to
+FWDL_MEMORY=10
+
+# DNS name of the OSS server.
+OSS=rniname-chm
+
+# Sensus test case user on NC server password
+SENSUS_USER_FOR_TEST_CASES_USER_PASSWORD=sensus
+ENABLE_SSL_ON_GW=NO
+
+######################################################
+## 					  SQL SERVER                    ##
+######################################################
+
+DB_PLATFORM=linux
+SQL_SERVER_FCI_DNS=rniname-sqlc
+UPGRADE_OR_FULL_INSTALL=FULL
+SA_PASSWORD= pAssw0rd!!
+DB_START_VERSION=release_1.4.2
+DB_END_VERSION=release_7.0.0
+DB_NAME=FlexNetDb
+
+##########################################################
+##			SQL SERVER FILE LAYOUT AND OPTIONS			##
+##########################################################
+
+FLEXNETDB_DATABASE_LOCATION="/var/opt/mssql/flexnet/SQL_Data"
+
+FLEXNETDB_LOG_FILE_LOCATION="/var/opt/mssql/flexnet/SQL_Log"
+
+FLEXNETDB_JOB_LOG_LOCATION="/var/opt/mssql/flexnet/SQL_JobLog"
+
+FLEXNETDB_MATRIX_FILE_GROUP_LOCATION="/var/opt/mssql/flexnet/SQL_MatrixFileGroup"
+
+FLEXNETDB_ON_AIR_FILE_GROUP_LOCATION="/var/opt/mssql/flexnet/SQL_OnAirFileGroup"
+
+FLEXNETDB_LOGGING_FILE_GROUP_LOCATION="/var/opt/mssql/flexnet/SQL_LoggingFileGroup"
+
+FLEXNETDB_ALARMS_FILE_GROUP_LOCATION="/var/opt/mssql/flexnet/SQL_AlarmsFileGroup"
+
+FLEXNETDB_FACT_TABLE_FILE_GROUP_LOCATION="/var/opt/mssql/flexnet/SQL_DWFileGroup"
+
+FLEXNETDB_DELIVERY_LOCATION="/var/opt/mssql/flexnet/Deliveries"
+
+FLEXNETDB_USTATS_WORK_LOCATION="/var/opt/mssql/flexnet/UStats"
+
+FLEXNETDB_TEMP_LOCATION="/var/opt/mssql/flexnet/SQL_Temp"
+
+FLEXNETDB_PARTITIONING_ARCHIVE_DATA_LOCATION="/var/opt/mssql/flexnet/Archive"
+
+# Default FALSE. For large systems set to TRUE
+USE_PARTITIONING=FALSE
+
+# Units in MB. Default 64. For large systems set to 2000
+ALARMS_SIZE=2000
+
+# Units in MB. Default 64. For large systems set to 100
+ALARMS_FILE_INCREMENT=100
+
+# Units in MB. Default 64. For large systems set to 2000
+FACT_TABLE_SIZE=2000
+
+# Units in MB. Default 64. For large systems set to 1000
+FACT_TABLE_FILE_INCREMENT=1000
+
+# Units in MB. Default 1. For large systems set to 64
+ON_AIR_TABLE_SIZE=64
+
+# Units in MB. Default 1. For large systems set to 64
+ON_AIR_TABLE_FILE_INCREMENT=64
+
+# Units in MB. Default 64. For large systems set to 64
+LOG_FILE_SIZE=64
+
+# Units in MB. Default 64. For large systems set to 256
+DATABASE_SIZE=256
+CB7 Arqiva RNI install.config creation 43
+Sensus FlexNet™ RNI Installation AIG-200100-01
+# Units in MB. Default 1. For large systems set to 64
+LOGGING_SIZE=64
+
+#####################################
+## 		  SQL SERVER LOGINS        ##
+#####################################
+
+# DB owner
+FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+# RNI service logins
+FNKM_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+NC_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+GW_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+FWDL_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+KEYMGR_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+SCANNER_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+GWSCHED_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+ROUTEMANAGER_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+FLEXIP_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+NMS_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+# PW for dbstreamer login; as of CB7+, dbstreamer replaces ParsersWCF and uses this login
+PARSERS_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+# These logins are created but may be disabled after install if not needed
+QA_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+EPM_FLEXNETDB_USER_ID_PASSWORD=pAssw0rd!!
+
+# These vars are still required but the users are not actually created in CB7+
+FLEXIP_FLEXIPDB_USER_ID_PASSWORD=pAssw0rd!!
+GW_FLEXIPDB_USER_ID_PASSWORD=pAssw0rd!!
+
+##############################################################################
+## 		HSM SERVERS - Install scripts only support up to three entries      ##
+##############################################################################
+
+HSM_SERVER1_NAME=hsmserver01
+HSM_SERVER1_IP=??.??.??.??
+HSM_SERVER2_NAME==hsmserver01
+HSM_SERVER2_IP=??.??.??.??
+HSM_SERVER3_NAME==hsmserver01
+HSM_SERVER3_IP=??.??.??.??
+
+#########################################################
+## 						SERVER 1 					   ##
+#########################################################
+
+SERVER1_NAME=rniname-fnkm
+SERVER1_PURPOSE=fnkm
+SERVER1_INSTANCE=1
+
+#########################################################
+## 						SERVER 2 					   ##
+#########################################################
+
+SERVER2_NAME=rniname-flexip1
+SERVER2_PURPOSE=flexip
+SERVER2_INSTANCE=1
+
+#########################################################
+## 						SERVER 3 					   ##
+#########################################################
+
+SERVER3_NAME=rniname-flexip2
+SERVER3_PURPOSE=flexip
+SERVER3_INSTANCE=2
+
+#########################################################
+## 						SERVER 4 					   ##
+#########################################################
+
+SERVER4_NAME=rniname-routemanager1
+SERVER4_PURPOSE=routemanager
+SERVER4_INSTANCE=1
+
+#########################################################
+## 						SERVER 5 					   ##
+#########################################################
+
+SERVER5_NAME=rniname-routemanager2
+SERVER5_PURPOSE=routemanager
+SERVER5_INSTANCE=2
+
+#########################################################
+## 						SERVER 6 					   ##
+#########################################################
+
+SERVER6_NAME=rniname-aggregator
+SERVER6_PURPOSE=aggregator
+SERVER6_INSTANCE=1
+
+#########################################################
+## 						SERVER 7 					   ##
+#########################################################
+
+SERVER7_NAME=rniname-flexapp1
+SERVER7_PURPOSE=flexapp
+SERVER7_INSTANCE=1
+
+#########################################################
+## 						SERVER 8 					   ##
+#########################################################
+
+SERVER8_NAME=rniname-flexapp2
+SERVER8_PURPOSE=flexapp
+SERVER8_INSTANCE=2
+
+#########################################################
+## 						SERVER 9 					   ##
+#########################################################
+
+SERVER9_NAME=rniname-flexapp3
+SERVER9_PURPOSE=flexapp
+SERVER9_INSTANCE=3
+
+#########################################################
+## 						SERVER 10 					   ##
+#########################################################
+
+SERVER10_NAME=rniname-nc1
+SERVER10_PURPOSE=nc
+SERVER10_INSTANCE=1
+
+#########################################################
+## 						SERVER 11 					   ##
+#########################################################
+
+SERVER11_NAME=rniname-nc2
+SERVER11_PURPOSE=nc
+SERVER11_INSTANCE=2
+
+#########################################################
+## 						SERVER 12 					   ##
+#########################################################
+
+SERVER12_NAME=rniname-nc3
+SERVER12_PURPOSE=nc
+SERVER12_INSTANCE=3
+
+#########################################################
+## 						SERVER 13 					   ##
+#########################################################
+
+SERVER13_NAME=rniname-nc4
+SERVER13_PURPOSE=nc
+SERVER13_INSTANCE=4
+
+#########################################################
+## 						SERVER 14 					   ##
+#########################################################
+
+SERVER14_NAME=rniname-gw1
+SERVER14_PURPOSE=gw
+SERVER14_INSTANCE=1
+
+#########################################################
+## 						SERVER 15 					   ##
+#########################################################
+
+SERVER15_NAME=rniname-gw2
+SERVER15_PURPOSE=gw
+SERVER15_INSTANCE=2
+
+##########################################################
+### 					SERVER 16 					    ##
+##########################################################
+
+SERVER16_NAME=rniname-gw3
+SERVER16_PURPOSE=gw
+SERVER16_INSTANCE=3
+
+#########################################################
+## 						SERVER 17 					   ##
+#########################################################
+## Note: For other Redis config scripts to work, the   ##
+## master server must be defined first in this list.   ##
+#########################################################
+
+SERVER17_NAME=rniname-cacheserver1
+SERVER17_PURPOSE=redis_master
+SERVER17_INSTANCE=1
+
+#########################################################
+## 						SERVER 18 					   ##
+#########################################################
+
+SERVER18_NAME=rniname-cacheserver2
+SERVER18_PURPOSE=redis_slave
+SERVER18_INSTANCE=2
+
+#########################################################
+## 						SERVER 19 					   ##
+#########################################################
+
+SERVER19_NAME=rniname-fnkm
+SERVER19_PURPOSE=dbbuilder-msp
+SERVER19_INSTANCE=1
+
+#########################################################
+## 						SERVER 20 					   ##
+#########################################################
+
+SERVER20_NAME=rniname-dbl1
+SERVER20_PURPOSE=single_db_server
+SERVER20_INSTANCE=1
+
+#########################################################
+## 						SERVER 21 					   ##
+#########################################################
+
+SERVER21_NAME=rniname-dbstreamer1
+SERVER21_PURPOSE=dbstreamer
+SERVER21_INSTANCE=1
+
+#########################################################
+## 						SERVER 22 					   ##
+#########################################################
+
+SERVER22_NAME=rniname-dbstreamer2
+SERVER22_PURPOSE=dbstreamer
+SERVER22_INSTANCE=2
+
+#########################################################
+## 						Server 23 					   ##
+#########################################################
+
+SERVER23_NAME=rniname-broker1
+SERVER23_PURPOSE=broker
+SERVER23_INSTANCE=1
+
+#########################################################
+## 						Server 24 					   ##
+#########################################################
+
+SERVER24_NAME=rniname-broker2
+SERVER24_PURPOSE=broker
+SERVER24_INSTANCE=2
+
+#########################################################
